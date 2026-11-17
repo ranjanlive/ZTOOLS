@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ZToolsRegistry",
+  "description": "Schema definition for the ZTools Tool Registry catalog.",
+  "type": "object",
+  "required": ["registry_version", "name", "description", "repository", "categories", "tools"],
+  "properties": {
+    "registry_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "version", "description", "category", "author", "license", "tags", "manifest_path", "source_url"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9_-]+$"
+          },
+          "name": { "type": "string" },
+          "version": { "type": "string" },
+          "description": { "type": "string" },
+          "category": { "type": "string" },
+          "suite": { "type": "string" },
+          "author": {
+            "type": "object",
+            "required": ["name", "github"],
+            "properties": {
+              "name": { "type": "string" },
+              "github": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          },
+          "license": { "type": "string" },
+          "icon": { "type": "string" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "manifest_path": { "type": "string" },
+          "source_url": { "type": "string" },
+          "release_tag": { "type": "string" },
+          "platforms": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "downloads": {
+            "type": "object"
+          },
+          "install_command": { "type": "string" },
+          "sample_call": { "type": "object" }
+        }
+      }
+    }
+  }
+}

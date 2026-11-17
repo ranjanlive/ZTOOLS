@@ -1,0 +1,58 @@
+name: Validate Tool Registry
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate Registry & Manifests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Ajv CLI (JSON Schema Validator)
+        run: npm install -g ajv-cli ajv-formats
+
+      - name: Validate registry.json against registry.schema.json
+        run: |
+          ajv test -s registry.schema.json -d registry.json --valid --spec=draft-07 -c ajv-formats
+
+      - name: Verify all tool manifests exist and are valid JSON
+        run: |
+          node -e '
+            const fs = require("fs");
+            const registry = JSON.parse(fs.readFileSync("registry.json", "utf8"));
+            console.log(`Checking ${registry.tools.length} registered tools...`);
+            let errors = 0;
+            for (const tool of registry.tools) {
+              if (!fs.existsSync(tool.manifest_path)) {
+                console.error(`ERROR: Manifest not found for ${tool.id}: ${tool.manifest_path}`);
+                errors++;
+                continue;
+              }
+              try {
+                const manifest = JSON.parse(fs.readFileSync(tool.manifest_path, "utf8"));
+                if (!manifest.name || !manifest.description || !manifest.parameters) {
+                  console.error(`ERROR: Manifest for ${tool.id} is missing required fields (name, description, parameters)`);
+                  errors++;
+                } else {
+                  console.log(`✓ Verified tool: ${tool.id} (${tool.manifest_path})`);
+                }
+              } catch (e) {
+                console.error(`ERROR: Invalid JSON in ${tool.manifest_path}: ${e.message}`);
+                errors++;
+              }
+            }
+            if (errors > 0) {
+              process.exit(1);
+            }
+          '

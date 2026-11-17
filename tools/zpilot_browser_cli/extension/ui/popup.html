@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ZPilot Browser</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <img src="../icons/icon48.png" alt="" width="32" height="32">
+    <div class="brand">
+      <div class="name">ZPilot Browser</div>
+      <div class="muted small" id="version">Browser tools for AI agents</div>
+    </div>
+    <span class="pill" id="linkPill">Checking…</span>
+  </header>
+
+  <main>
+    <section class="card link" id="linkCard">
+      <div class="row">
+        <div>
+          <div class="title" id="linkTitle">Tool connection</div>
+          <div class="muted small" id="linkDetail"></div>
+        </div>
+        <button class="btn small" id="reconnect">Reconnect</button>
+      </div>
+      <div class="ext-id" id="extIdRow">
+        <span class="muted small">Connection ID</span>
+        <code id="extId" title="Paste this profile's full Connection ID into extension_id in config.json"></code>
+        <button class="btn small" id="copyId">Copy</button>
+      </div>
+      <p class="muted small">Copy this ID into <code>extension_id</code> in each tool's config. Each browser profile has its own ID.</p>
+      <button class="btn small" id="resetId">Reset ID</button>
+      <p class="muted small" id="resetNote">Reset cancels this profile's jobs. Update your tool configs afterward.</p>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <span class="title">Tools</span>
+        <span class="muted small" id="running"></span>
+      </div>
+      <ul class="tools" id="tools"></ul>
+    </section>
+
+    <section class="card settings">
+      <div class="section-head"><span class="title">Settings</span></div>
+      <label class="setting">
+        <span>Default search engine</span>
+        <select id="engine">
+          <option value="google">Google</option>
+          <option value="bing">Bing</option>
+          <option value="duckduckgo">DuckDuckGo</option>
+          <option value="brave">Brave</option>
+          <option value="yahoo">Yahoo</option>
+        </select>
+      </label>
+      <div class="setting">
+        <span>Show agent cursor</span>
+        <label class="switch"><input type="checkbox" id="cursor"><span></span></label>
+      </div>
+      <div class="setting">
+        <span>Agent tabs</span>
+        <button class="btn small" id="releaseAgent">Release control</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <span class="title">Recent activity</span>
+      </div>
+      <ul class="activity" id="activity"><li class="muted empty">No tool calls yet.</li></ul>
+    </section>
+  </main>
+
+  <footer>
+    <button class="btn primary" id="openConsole">Open console</button>
+  </footer>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

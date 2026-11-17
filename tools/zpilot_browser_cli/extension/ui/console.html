@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZPilot Browser Console</title>
+  <link rel="icon" href="../icons/icon32.png">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="console.css">
+</head>
+<body>
+  <header class="bar">
+    <img src="../icons/icon48.png" alt="" width="28" height="28">
+    <div class="brand"><b>ZPilot Browser Console</b><span class="muted">Run any tool by hand — the same calls agents make.</span></div>
+    <span class="pill" id="conn">Connecting…</span>
+  </header>
+
+  <main class="layout">
+    <section class="card pane">
+      <nav class="tabs" id="toolTabs" role="tablist" aria-label="Tools"></nav>
+      <p class="muted desc" id="toolDesc"></p>
+
+      <div class="field">
+        <div class="field-head">
+          <label for="args">Arguments (JSON)</label>
+          <div class="presets" id="presets"></div>
+        </div>
+        <textarea id="args" spellcheck="false" rows="12"></textarea>
+        <div class="error" id="argsError" role="alert"></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="run">Run <kbd>Ctrl ↵</kbd></button>
+        <button class="btn" id="cancel" disabled>Cancel</button>
+        <button class="btn" id="schemaBtn">Schema</button>
+      </div>
+      <pre class="schema mono" id="schema" hidden></pre>
+    </section>
+
+    <section class="card pane output">
+      <div class="out-head">
+        <span class="title">Result</span>
+        <span class="muted" id="status">Ready</span>
+        <button class="btn small" id="copy" disabled>Copy JSON</button>
+      </div>
+      <ol class="log mono" id="log"></ol>
+      <div class="images" id="images"></div>
+      <div class="content-box" id="contentBox" hidden>
+        <div class="muted label" id="contentLabel">Content</div>
+        <pre class="mono" id="content"></pre>
+      </div>
+      <details class="raw" id="rawBox" hidden>
+        <summary>Full JSON</summary>
+        <pre class="mono" id="raw"></pre>
+      </details>
+    </section>
+  </main>
+
+  <script src="console.js" type="module"></script>
+</body>
+</html>

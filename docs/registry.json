@@ -1,0 +1,259 @@
+{
+  "$schema": "./registry.schema.json",
+  "registry_version": "1.0.0",
+  "name": "ZTools Official Tool Registry",
+  "description": "Curated catalog of tools, extensions, and automated capabilities for ZAgent and ZEngine autonomous systems.",
+  "repository": "https://github.com/ranjanlive/ZTOOLS",
+  "updated_at": "2026-11-17T14:00:00Z",
+  "categories": [
+    {
+      "id": "mobile",
+      "name": "Mobile & Android",
+      "description": "Project scaffolding, mobile build systems, and Android development tools."
+    },
+    {
+      "id": "browser",
+      "name": "Browser & Web Automation",
+      "description": "Chrome automation, DOM inspection, navigation, and web interaction tools."
+    },
+    {
+      "id": "search",
+      "name": "Search & Research",
+      "description": "Multi-engine web search, content scraping, and information retrieval."
+    },
+    {
+      "id": "ai-media",
+      "name": "AI & Generative Media",
+      "description": "Image generation, music synthesis, and generative AI integrations."
+    }
+  ],
+  "tools": [
+    {
+      "id": "android_project_scaffold",
+      "name": "Android Project Scaffold",
+      "version": "1.0.0",
+      "description": "Offline Android project generator targeting Kotlin & Jetpack Compose with pinned stable toolchain, Gradle wrapper, and Material 3 templates.",
+      "category": "mobile",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "android",
+      "tags": ["android", "kotlin", "jetpack-compose", "gradle", "scaffolding", "offline"],
+      "manifest_path": "tools/android_project_scaffold/android_project_scaffold.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/android_project_scaffold",
+      "release_tag": "android-scaffold-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/android-scaffold-v1.0.0/android_project_scaffold-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/android-scaffold-v1.0.0/android_project_scaffold-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/android-scaffold-v1.0.0/android_project_scaffold-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/android-scaffold-v1.0.0/android_project_scaffold-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/android-scaffold-v1.0.0/android_project_scaffold-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/android-scaffold-v1.0.0/android_project_scaffold-1.0.0-darwin-arm64.zip",
+        "source": "https://github.com/ranjanlive/ZTOOLS/releases/download/android-scaffold-v1.0.0/android_project_scaffold-1.0.0-source.zip"
+      },
+      "install_command": "zagent tools install android_project_scaffold",
+      "sample_call": {
+        "name": "MyAwesomeApp",
+        "package": "com.example.awesome",
+        "output": "./MyAwesomeApp",
+        "min_sdk": 26,
+        "template": "empty_activity"
+      }
+    },
+    {
+      "id": "web_search",
+      "name": "ZPilot Web Search",
+      "version": "2.0.0",
+      "description": "Multi-engine web search tool for ZAgent. Search Google, Bing, DuckDuckGo, Brave, or Yahoo using your authenticated browser session.",
+      "category": "search",
+      "suite": "zpilot_browser_cli",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "search",
+      "tags": ["search", "google", "bing", "duckduckgo", "brave", "browser", "zpilot"],
+      "manifest_path": "tools/zpilot_browser_cli/web_search/web_search.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/zpilot_browser_cli/web_search",
+      "release_tag": "zpilot-v2.0.0",
+      "platforms": [
+        "windows-amd64",
+        "linux-amd64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-windows-amd64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-linux-amd64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-darwin-arm64.zip",
+        "extension": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-extension-v2.0.0.zip",
+        "all-platforms": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-browser-cli-v2.0.0-all-platforms.zip"
+      },
+      "install_command": "zagent tools install web_search",
+      "sample_call": {
+        "query": "Golang modern concurrent design patterns",
+        "engine": "google",
+        "result_count": 5
+      }
+    },
+    {
+      "id": "webpage_read",
+      "name": "ZPilot Webpage Reader",
+      "version": "2.0.0",
+      "description": "Read JavaScript-rendered web pages using your active browser session. Returns distraction-free Markdown, text, or DOM nodes with link extraction.",
+      "category": "browser",
+      "suite": "zpilot_browser_cli",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "globe",
+      "tags": ["reader", "scraper", "markdown", "browser", "content-extraction", "zpilot"],
+      "manifest_path": "tools/zpilot_browser_cli/webpage_read/webpage_read.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/zpilot_browser_cli/webpage_read",
+      "release_tag": "zpilot-v2.0.0",
+      "platforms": [
+        "windows-amd64",
+        "linux-amd64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-windows-amd64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-linux-amd64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install webpage_read",
+      "sample_call": {
+        "url": "https://news.ycombinator.com",
+        "format": "markdown",
+        "max_length": 5000
+      }
+    },
+    {
+      "id": "zagent_in_chrome",
+      "name": "ZPilot Browser Automation",
+      "version": "2.0.0",
+      "description": "Direct browser automation bridge for ZAgent. Navigate, read, click, type, fill forms, take screenshots, and inspect DOM inside Google Chrome.",
+      "category": "browser",
+      "suite": "zpilot_browser_cli",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "chrome",
+      "tags": ["chrome", "automation", "cdp", "browser", "clicks", "screenshots", "zpilot"],
+      "manifest_path": "tools/zpilot_browser_cli/zagent_in_chrome/zagent_in_chrome.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/zpilot_browser_cli/zagent_in_chrome",
+      "release_tag": "zpilot-v2.0.0",
+      "platforms": [
+        "windows-amd64",
+        "linux-amd64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-windows-amd64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-linux-amd64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install zagent_in_chrome",
+      "sample_call": {
+        "action": "navigate",
+        "url": "https://github.com/ranjanlive"
+      }
+    },
+    {
+      "id": "generate_image",
+      "name": "Browser AI Image Generator",
+      "version": "2.0.0",
+      "description": "Generate or edit images through ChatGPT / DALL-E directly in the user's signed-in browser session, returning saved image files.",
+      "category": "ai-media",
+      "suite": "zpilot_browser_cli",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "image",
+      "tags": ["image-generation", "ai", "chatgpt", "dall-e", "browser", "media", "zpilot"],
+      "manifest_path": "tools/zpilot_browser_cli/generate_image/generate_image.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/zpilot_browser_cli/generate_image",
+      "release_tag": "zpilot-v2.0.0",
+      "platforms": [
+        "windows-amd64",
+        "linux-amd64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-windows-amd64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-linux-amd64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install generate_image",
+      "sample_call": {
+        "prompt": "Futuristic cyberpunk workstation with glowing holographic monitors in high resolution",
+        "count": 1
+      }
+    },
+    {
+      "id": "generate_music",
+      "name": "Browser AI Music Generator",
+      "version": "2.0.0",
+      "description": "Synthesize musical tracks and background scores through Gemini / browser audio tools, supporting custom genres, instruments, and style prompts.",
+      "category": "ai-media",
+      "suite": "zpilot_browser_cli",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "music",
+      "tags": ["music", "audio", "synthesis", "ai", "gemini", "browser", "media", "zpilot"],
+      "manifest_path": "tools/zpilot_browser_cli/generate_music/generate_music.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/zpilot_browser_cli/generate_music",
+      "release_tag": "zpilot-v2.0.0",
+      "platforms": [
+        "windows-amd64",
+        "linux-amd64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-windows-amd64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-linux-amd64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/zpilot-v2.0.0/zpilot-v2.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install generate_music",
+      "sample_call": {
+        "prompt": "Uplifting synthwave retro groove with 80s drums and melodic arpeggio",
+        "duration_sec": 30
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "ZPilot Browser",
+  "short_name": "ZPilot Browser",
+  "version": "2.0.0",
+  "description": "Browser tools for ZPilot agents: browser control, image generation (ChatGPT), music generation (Gemini), web search and page reading, in your own signed-in Chrome.",
+  "minimum_chrome_version": "120",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6THVg0FGr2uSDloABoWc08dWkyu/qfQ5Ua+fNSvnu6ElpfEDcyhHqNSan+jhCKG4LcG6Taf/Z5o9jM691nuYPoGQQhgjYcT6V0kH9HNi6rNsSVNxWKxia4NmDrRO5t6HDZM7loqBu7QbYrsnwrhV69EjLPmCUyT/A+mJdDR+pLCYoFE+ixwGiO4dUHY/IL4i1ENPwNQ7gS+qU4OSAZw8PsDTOrY4PtaqyqaJfNNHfMh5p8frvxHfTNHwtpyeP+ktVXl9RN99hjq7/EsV6CzePRh2816vfvPhLGMQU0c0UBBP3cjQgLJDpySLXBe9rvbsEiaAtE0iReJrhT+JDOnkIQIDAQAB",
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "scripting",
+    "storage",
+    "debugger",
+    "webNavigation",
+    "alarms",
+    "downloads",
+    "contentSettings"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service_worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "ZPilot Browser",
+    "default_popup": "ui/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "ui/console.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZTools — Official Tool Registry for ZAgent & ZEngine</title>
+  <meta name="description" content="Discover, inspect, and install community and core tools for ZAgent and the ZEngine autonomous agent architecture.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'%3E%3C/path%3E%3C/svg%3E">
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-logo">
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">ZTools</span>
+          <span class="brand-badge">Registry v1.0</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#catalog" class="nav-link active">Catalog</a>
+        <a href="#contribute" class="nav-link">Contribute</a>
+        <a href="https://github.com/ranjanlive/zagent" target="_blank" rel="noopener" class="nav-link">ZAgent Core</a>
+        <a href="https://github.com/ranjanlive/zsched" target="_blank" rel="noopener" class="nav-link">ZSched</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="os-detect-badge" id="osBadge" title="Automatically detected platform">
+          <span class="os-dot"></span>
+          <span id="detectedOsText">Detecting OS...</span>
+        </div>
+        <a href="https://github.com/ranjanlive/ZTOOLS" target="_blank" rel="noopener" class="btn btn-github">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          <span>Star on GitHub</span>
+          <span class="star-count" id="starCount">★</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-container">
+      <div class="hero-tag">
+        <span class="tag-icon">⚡</span> Official Ecosystem Registry
+      </div>
+      <h1 class="hero-title">
+        Empower Autonomous Agents with <span class="gradient-text">World-Class Tools</span>
+      </h1>
+      <p class="hero-subtitle">
+        Explore, inspect, and run specialized capabilities for <a href="https://github.com/ranjanlive/zagent" target="_blank">ZAgent</a>. Built on standardized JSON manifests, sandbox isolation, and language-agnostic CLI protocols.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-value" id="totalToolsCount">6</span>
+          <span class="stat-label">Verified Tools</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="categoriesCount">4</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">6+</span>
+          <span class="stat-label">OS Architectures</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">100%</span>
+          <span class="stat-label">Open Source</span>
+        </div>
+      </div>
+
+      <div class="hero-quick-command">
+        <span class="command-prefix">$</span>
+        <code id="heroCode">zagent tools install android_project_scaffold</code>
+        <button class="btn-copy-mini" id="heroCopyBtn" title="Copy command">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Catalog Section -->
+  <section class="catalog-section" id="catalog">
+    <div class="section-container">
+      <!-- Toolbar: Search & Filters -->
+      <div class="catalog-toolbar">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search tools by name, keywords, tag, author..." autocomplete="off">
+          <button class="search-clear" id="searchClear" title="Clear search">×</button>
+        </div>
+
+        <div class="toolbar-controls">
+          <div class="filter-group">
+            <label for="platformFilter">OS:</label>
+            <select id="platformFilter">
+              <option value="all">All Platforms</option>
+              <option value="windows">Windows</option>
+              <option value="linux">Linux</option>
+              <option value="darwin">macOS</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="sortBy">Sort:</label>
+            <select id="sortBy">
+              <option value="featured">Featured</option>
+              <option value="name">Name (A-Z)</option>
+              <option value="version">Version</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-pills" id="categoryPills">
+        <button class="pill-btn active" data-category="all">All Tools</button>
+        <!-- Populated dynamically -->
+      </div>
+
+      <!-- Loading / Error States -->
+      <div class="loading-state" id="loadingState">
+        <div class="spinner"></div>
+        <p>Loading tools registry from GitHub...</p>
+      </div>
+
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <line x1="8" y1="11" x2="14" y2="11"></line>
+        </svg>
+        <h3>No tools found matching your query</h3>
+        <p>Try searching with another keyword or resetting the category filter.</p>
+        <button class="btn btn-secondary" id="resetSearchBtn">Reset Filters</button>
+      </div>
+
+      <!-- Tools Grid -->
+      <div class="tools-grid" id="toolsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Contribute Section -->
+  <section class="contribute-section" id="contribute">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Public Contributions</span>
+        <h2 class="section-title">Contribute Your Own Tools</h2>
+        <p class="section-subtitle">
+          ZTools is built for the community. You can write tools in <strong>any language</strong>—Go, Python, TypeScript, Rust, or Bash—and register them in minutes.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3 class="step-title">Author the Tool</h3>
+          <p class="step-desc">
+            Build your executable or script to accept JSON over <code>stdin</code> and write formatted JSON to <code>stdout</code>.
+          </p>
+          <code class="step-code">tools/my_tool/main.go</code>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Declare Manifest</h3>
+          <p class="step-desc">
+            Create <code>&lt;tool_name&gt;.json</code> defining parameter schemas, command invocation, and execution timeout.
+          </p>
+          <code class="step-code">tools/my_tool/my_tool.json</code>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3 class="step-title">Submit via Pull Request</h3>
+          <p class="step-desc">
+            Add an entry to <code>registry.json</code> and open a GitHub PR. Our automated CI verifies schemas and publishes your tool!
+          </p>
+          <code class="step-code">registry.json</code>
+        </div>
+      </div>
+
+      <div class="contribute-cta-box">
+        <div class="cta-content">
+          <h3>Ready to publish your tool to the community?</h3>
+          <p>Read our step-by-step developer guidelines, manifest specifications, and PR checklists.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="https://github.com/ranjanlive/ZTOOLS/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" class="btn btn-primary">
+            Read Contributing Guide
+          </a>
+          <a href="https://github.com/ranjanlive/ZTOOLS/blob/main/TOOL_SPECIFICATION.md" target="_blank" rel="noopener" class="btn btn-secondary">
+            Tool Protocol Spec
+          </a>
+          <a href="https://github.com/ranjanlive/ZTOOLS/pulls" target="_blank" rel="noopener" class="btn btn-secondary">
+            Open a Pull Request
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Modal for Tool Details / Schema -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-icon" id="modalIcon"></div>
+          <div>
+            <h2 class="modal-title" id="modalTitle">Tool Details</h2>
+            <div class="modal-meta" id="modalMeta"></div>
+          </div>
+        </div>
+        <button class="modal-close" id="modalCloseBtn" title="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-tabs">
+        <button class="modal-tab active" data-tab="schema">Parameters & Schema</button>
+        <button class="modal-tab" data-tab="sample">Sample Run</button>
+        <button class="modal-tab" data-tab="manifest">Raw Manifest</button>
+        <button class="modal-tab" data-tab="downloads">Downloads & Install</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Tab 1: Schema -->
+        <div class="tab-pane active" id="tabSchema">
+          <p class="tab-desc" id="modalDescription"></p>
+          <div class="schema-table-container">
+            <table class="schema-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Required</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody id="schemaTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 2: Sample Run -->
+        <div class="tab-pane" id="tabSample">
+          <p class="tab-desc">Sample invocation command and input parameters payload for ZAgent:</p>
+          <div class="code-block-wrapper">
+            <div class="code-block-header">
+              <span>CLI Invocation</span>
+              <button class="btn-copy-code" id="copySampleBtn">Copy</button>
+            </div>
+            <pre><code id="sampleCommandCode"></code></pre>
+          </div>
+        </div>
+
+        <!-- Tab 3: Raw Manifest -->
+        <div class="tab-pane" id="tabManifest">
+          <p class="tab-desc">Declared JSON manifest consumed by ZAgent runtime:</p>
+          <div class="code-block-wrapper">
+            <div class="code-block-header">
+              <span id="manifestFileName">manifest.json</span>
+              <button class="btn-copy-code" id="copyManifestBtn">Copy JSON</button>
+            </div>
+            <pre><code id="rawManifestCode">Loading manifest...</code></pre>
+          </div>
+        </div>
+
+        <!-- Tab 4: Downloads -->
+        <div class="tab-pane" id="tabDownloads">
+          <p class="tab-desc">Pre-compiled standalone binaries and packages:</p>
+          <div class="downloads-list" id="downloadsList">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a href="#" target="_blank" rel="noopener" class="btn btn-secondary" id="modalSourceBtn">
+          View Source on GitHub
+        </a>
+        <button class="btn btn-primary" id="modalInstallCopyBtn">
+          Copy Install Command
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="brand-text">
+          <span class="brand-name">ZTools</span>
+          <span class="footer-sub">Open Autonomous Tooling Ecosystem</span>
+        </div>
+        <p class="footer-copy">
+          Copyright &copy; 2026 Rajeev Ranjan (<a href="https://github.com/ranjanlive" target="_blank">@ranjanlive</a>). Licensed under Apache 2.0.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Repositories</h4>
+          <a href="https://github.com/ranjanlive/ZTOOLS" target="_blank">ZTools Registry</a>
+          <a href="https://github.com/ranjanlive/zagent" target="_blank">ZAgent Core</a>
+          <a href="https://github.com/ranjanlive/zsched" target="_blank">ZSched Scheduler</a>
+        </div>
+        <div class="footer-col">
+          <h4>Documentation</h4>
+          <a href="https://github.com/ranjanlive/ZTOOLS/blob/main/CONTRIBUTING.md" target="_blank">Contributing Guide</a>
+          <a href="https://github.com/ranjanlive/ZTOOLS/blob/main/TOOL_SPECIFICATION.md" target="_blank">Tool Protocol Spec</a>
+          <a href="https://github.com/ranjanlive/ZTOOLS/blob/main/registry.json" target="_blank">Raw Registry JSON</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

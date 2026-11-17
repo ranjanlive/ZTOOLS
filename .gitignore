@@ -1,0 +1,55 @@
+# Binaries & Executables
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.bin
+*.out
+
+# Archives & Packages
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Staging & Verification
+.verification/
+dist/
+staging/
+releases/
+release-smoke/
+windows-smoke/
+
+# Go build artifacts
+/bin/
+/pkg/
+*.test
+*.prof
+
+# Node & Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.token
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
