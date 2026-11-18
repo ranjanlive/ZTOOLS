@@ -1,11 +1,16 @@
 {
   "$schema": "./registry.schema.json",
-  "registry_version": "1.0.0",
+  "registry_version": "1.1.0",
   "name": "ZTools Official Tool Registry",
   "description": "Curated catalog of tools, extensions, and automated capabilities for ZAgent and ZEngine autonomous systems.",
   "repository": "https://github.com/ranjanlive/ZTOOLS",
-  "updated_at": "2026-11-17T14:00:00Z",
+  "updated_at": "2026-11-18T12:00:00Z",
   "categories": [
+    {
+      "id": "developer",
+      "name": "Developer & Git Workflows",
+      "description": "Code navigation, repository analysis, changelog generation, and filesystem utilities."
+    },
     {
       "id": "mobile",
       "name": "Mobile & Android",
@@ -28,6 +33,88 @@
     }
   ],
   "tools": [
+    {
+      "id": "workspace_tree",
+      "name": "Workspace Tree Visualizer",
+      "version": "1.0.0",
+      "description": "Generate clean, token-efficient directory trees for agents. Automatically respects .gitignore and filters out vendor, build, and binary directories.",
+      "category": "developer",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "folder",
+      "tags": ["tree", "workspace", "filesystem", "context-reduction", "gitignore", "cli"],
+      "manifest_path": "tools/workspace_tree/workspace_tree.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/workspace_tree",
+      "release_tag": "workspace-tree-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/workspace-tree-v1.0.0/workspace_tree-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/workspace-tree-v1.0.0/workspace_tree-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/workspace-tree-v1.0.0/workspace_tree-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/workspace-tree-v1.0.0/workspace_tree-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/workspace-tree-v1.0.0/workspace_tree-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/workspace-tree-v1.0.0/workspace_tree-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install workspace_tree",
+      "sample_call": {
+        "path": ".",
+        "max_depth": 3,
+        "show_sizes": true,
+        "format": "tree"
+      }
+    },
+    {
+      "id": "git_changelog",
+      "name": "Git Conventional Changelog",
+      "version": "1.0.0",
+      "description": "Parse Conventional Commits (feat, fix, perf, docs), calculate next SemVer bump (major, minor, patch), and generate clean release notes.",
+      "category": "developer",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "git",
+      "tags": ["git", "changelog", "semver", "release", "conventional-commits", "automation"],
+      "manifest_path": "tools/git_changelog/git_changelog.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/git_changelog",
+      "release_tag": "git-changelog-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/git-changelog-v1.0.0/git_changelog-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/git-changelog-v1.0.0/git_changelog-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/git-changelog-v1.0.0/git_changelog-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/git-changelog-v1.0.0/git_changelog-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/git-changelog-v1.0.0/git_changelog-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/git-changelog-v1.0.0/git_changelog-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install git_changelog",
+      "sample_call": {
+        "repo_path": ".",
+        "current_version": "v1.0.0",
+        "format": "markdown",
+        "include_hashes": true
+      }
+    },
     {
       "id": "android_project_scaffold",
       "name": "Android Project Scaffold",

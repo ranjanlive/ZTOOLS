@@ -1,0 +1,72 @@
+{
+  "name": "workspace_tree",
+  "description": "Generate a clean, token-efficient directory tree of a workspace or folder. Automatically ignores noise directories (.git, node_modules, build, dist, vendor) and respects .gitignore. Supports max depth, extension filtering, file size reporting, and JSON or ASCII tree output.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "Target directory path relative to workspace or absolute. Defaults to '.' (current directory)."
+      },
+      "max_depth": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 15,
+        "default": 3,
+        "description": "Maximum depth of directory traversal. Default 3."
+      },
+      "show_hidden": {
+        "type": "boolean",
+        "default": false,
+        "description": "Include hidden files/folders (starting with dot). Default false."
+      },
+      "show_sizes": {
+        "type": "boolean",
+        "default": false,
+        "description": "Include human-readable file sizes in the tree. Default false."
+      },
+      "extensions": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional list of file extensions to include (e.g. ['.go', '.kt', '.ts']). Other files are omitted."
+      },
+      "ignore_patterns": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Additional glob patterns or folder names to ignore."
+      },
+      "format": {
+        "type": "string",
+        "enum": [
+          "tree",
+          "json",
+          "flat"
+        ],
+        "default": "tree",
+        "description": "Output format: 'tree' (ASCII/Unicode visual tree), 'json' (nested structure), or 'flat' (list of relative paths)."
+      },
+      "max_entries": {
+        "type": "integer",
+        "default": 500,
+        "description": "Safety cap on total files and directories listed to avoid blowing context limits."
+      }
+    },
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/workspace_tree",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 30,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

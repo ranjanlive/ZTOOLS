@@ -1,0 +1,53 @@
+{
+  "name": "git_changelog",
+  "description": "Analyze git commit history, parse Conventional Commits (feat, fix, perf, docs, chore), calculate recommended SemVer version bump (major, minor, patch), and generate clean release notes and changelog entries.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "repo_path": {
+        "type": "string",
+        "description": "Path to the git repository. Defaults to current directory ('.')."
+      },
+      "from_ref": {
+        "type": "string",
+        "description": "Starting git commit/tag. Defaults to the latest tag (or initial commit if no tags exist)."
+      },
+      "to_ref": {
+        "type": "string",
+        "default": "HEAD",
+        "description": "Ending git commit/branch/tag. Defaults to 'HEAD'."
+      },
+      "current_version": {
+        "type": "string",
+        "description": "Current SemVer version (e.g. '0.1.0' or 'v1.2.3'). If omitted, attempts to extract from the latest git tag."
+      },
+      "format": {
+        "type": "string",
+        "enum": [
+          "markdown",
+          "json"
+        ],
+        "default": "markdown",
+        "description": "Output format: 'markdown' (formatted changelog section) or 'json' (structured categorizations and bump data)."
+      },
+      "include_hashes": {
+        "type": "boolean",
+        "default": true,
+        "description": "Include short commit hashes in the changelog. Default true."
+      }
+    },
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/git_changelog",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 30,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}
