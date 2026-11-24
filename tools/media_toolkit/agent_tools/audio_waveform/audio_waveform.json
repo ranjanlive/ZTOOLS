@@ -1,0 +1,68 @@
+{
+  "name": "audio_waveform",
+  "description": "Visualise audio. kind waveform (default) draws a PNG of the whole waveform, spectrogram draws frequencies over time (useful for spotting noise, hum or clipping), and audiogram renders an MP4 with an animated waveform over a background image, the usual way to share podcast clips on social media. Images are attached to the result for vision models.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the audio or video file, relative to the workspace."
+      },
+      "kind": {
+        "type": "string",
+        "description": "waveform (default), spectrogram or audiogram.",
+        "enum": [
+          "waveform",
+          "spectrogram",
+          "audiogram"
+        ],
+        "default": "waveform"
+      },
+      "width": {
+        "type": "integer",
+        "description": "Width in pixels. Default 1600 (1080 for audiograms).",
+        "minimum": 64,
+        "maximum": 7680
+      },
+      "height": {
+        "type": "integer",
+        "description": "Height in pixels. Default 400 waveform, 600 spectrogram, 1080 audiogram.",
+        "minimum": 64,
+        "maximum": 4320
+      },
+      "color": {
+        "type": "string",
+        "description": "Waveform color: a name or hex (#4F8EF7, default)."
+      },
+      "background_image": {
+        "type": "string",
+        "description": "For audiograms: background image (cover art), relative to the workspace."
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. PNG for images, MP4 for audiograms. Default: next to the input as <name>_<kind>.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/audio_waveform",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

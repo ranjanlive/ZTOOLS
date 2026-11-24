@@ -1,0 +1,90 @@
+{
+  "name": "audio_adjust",
+  "description": "Improve the sound of a video or audio file. normalize brings it to a standard loudness (target_lufs: -14 for YouTube/Spotify, -16 for podcasts (default), -23 for broadcast) with accurate two-pass measurement. Also: volume (+6dB, -3dB, 150%), fade_in/fade_out, denoise (light/medium/strong), highpass (remove rumble below N Hz, e.g. 80) and mono. Video is copied untouched.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the audio or video file, relative to the workspace."
+      },
+      "volume": {
+        "type": "string",
+        "description": "Volume change: +6dB, -3dB, 150% or a multiplier like 1.5."
+      },
+      "normalize": {
+        "type": "boolean",
+        "description": "Normalise loudness to target_lufs with two-pass loudnorm. Default false.",
+        "default": false
+      },
+      "target_lufs": {
+        "type": "number",
+        "description": "Loudness target in LUFS, -40 to -5. Default -16.",
+        "minimum": -40,
+        "maximum": -5,
+        "default": -16
+      },
+      "fade_in": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Fade in over this long at the start. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "fade_out": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Fade out over this long at the end. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "denoise": {
+        "type": "string",
+        "description": "Background noise reduction: none (default), light, medium or strong.",
+        "enum": [
+          "none",
+          "light",
+          "medium",
+          "strong"
+        ],
+        "default": "none"
+      },
+      "highpass": {
+        "type": "integer",
+        "description": "Cut rumble and hum below this frequency in Hz (80 is good for voice).",
+        "minimum": 20,
+        "maximum": 1000
+      },
+      "mono": {
+        "type": "boolean",
+        "description": "Mix down to mono. Default false.",
+        "default": false
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. The extension picks the format. Default: next to the input as <name>_adjusted.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/audio_adjust",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "name": "images_to_video",
+  "description": "Make a video from still images: a photo slideshow, a product showcase or a video from generated images. Give a list of images or a folder (sorted naturally by name). Each image shows for seconds_per_image with a transition between them (fade, dissolve, wipes, slides, circle, zoom). Images are fitted to width×height (default 1920×1080; use 1080×1920 for vertical) with a blurred background, padding or cropping. Add background music with audio; it loops if short and fades out at the end.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "images": {
+        "type": "array",
+        "description": "Image files in order, relative to the workspace.",
+        "items": {
+          "type": "string"
+        }
+      },
+      "folder": {
+        "type": "string",
+        "description": "Folder of images to use (jpg, png, webp, bmp, tif), sorted by name."
+      },
+      "seconds_per_image": {
+        "type": "number",
+        "description": "How long each image is shown. Default 3.",
+        "minimum": 0.2,
+        "maximum": 600,
+        "default": 3
+      },
+      "transition": {
+        "type": "string",
+        "description": "Transition between images. Default fade.",
+        "enum": [
+          "fade",
+          "none",
+          "fadeblack",
+          "fadewhite",
+          "dissolve",
+          "wipeleft",
+          "wiperight",
+          "slideleft",
+          "slideright",
+          "circleopen",
+          "circleclose",
+          "smoothleft",
+          "smoothright",
+          "zoomin"
+        ],
+        "default": "fade"
+      },
+      "transition_seconds": {
+        "type": "number",
+        "description": "Transition length; must be shorter than seconds_per_image. Default 0.6.",
+        "minimum": 0,
+        "default": 0.6
+      },
+      "width": {
+        "type": "integer",
+        "description": "Video width. Default 1920.",
+        "minimum": 16,
+        "maximum": 7680,
+        "default": 1920
+      },
+      "height": {
+        "type": "integer",
+        "description": "Video height. Default 1080.",
+        "minimum": 16,
+        "maximum": 7680,
+        "default": 1080
+      },
+      "fit": {
+        "type": "string",
+        "description": "How images fill the frame: blur (default), pad or crop.",
+        "enum": [
+          "blur",
+          "pad",
+          "crop"
+        ],
+        "default": "blur"
+      },
+      "fps": {
+        "type": "integer",
+        "description": "Frame rate. Default 30.",
+        "minimum": 1,
+        "maximum": 60,
+        "default": 30
+      },
+      "audio": {
+        "type": "string",
+        "description": "Background music or narration file, relative to the workspace."
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the video, relative to the workspace. Default slideshow.mp4 next to the images."
+      },
+      "quality": {
+        "type": "string",
+        "description": "Encoding quality when re-encoding: high (visually lossless, larger files), medium, or low (smallest). Default high.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/images_to_video",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

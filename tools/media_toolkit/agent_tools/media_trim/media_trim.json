@@ -1,0 +1,78 @@
+{
+  "name": "media_trim",
+  "description": "Cut a section out of a video or audio file. Give start and end (or start and duration); times accept seconds or clock time. mode accurate (default) re-encodes for frame-exact cuts; mode fast copies the streams instantly but cuts at the nearest keyframe. The output keeps the input's format unless the output name has another extension.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video or audio file, relative to the workspace."
+      },
+      "start": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Where the clip begins. Default the beginning. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "end": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Where the clip ends. Default the end. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "duration": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Clip length, instead of end. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. The extension picks the format. Default: next to the input as <name>_trim.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "mode": {
+        "type": "string",
+        "description": "accurate (default, frame-exact, re-encodes) or fast (instant, no re-encoding, cuts at keyframes).",
+        "enum": [
+          "accurate",
+          "fast"
+        ],
+        "default": "accurate"
+      },
+      "quality": {
+        "type": "string",
+        "description": "Encoding quality when re-encoding: high (visually lossless, larger files), medium, or low (smallest). Default high.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/media_trim",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

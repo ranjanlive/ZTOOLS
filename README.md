@@ -2,7 +2,7 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/ranjanlive/ZTOOLS?style=flat&color=yellow)](https://github.com/ranjanlive/ZTOOLS/stargazers)
-[![Registry Version](https://img.shields.io/badge/Registry-v1.0.0-green.svg)](registry.json)
+[![Registry Version](https://img.shields.io/badge/Registry-v1.2.0-green.svg)](registry.json)
 [![Platform: Cross-Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blueviolet.svg)](#supported-platforms)
 [![Web Catalog](https://img.shields.io/badge/Showcase-Live%20Web%20Catalog-brightgreen.svg)](https://ranjanlive.github.io/ZTOOLS/)
 
@@ -25,6 +25,18 @@ Explore the dynamic web catalog live at **[ranjanlive.github.io/ZTOOLS](https://
 | **[generate_image](tools/zpilot_browser_cli/generate_image)** | AI & Media | `2.0.0` | Win, Linux, Mac | Generate and edit high-resolution images via ChatGPT / DALL-E directly in the user's browser session. |
 | **[generate_music](tools/zpilot_browser_cli/generate_music)** | AI & Media | `2.0.0` | Win, Linux, Mac | Synthesize custom musical tracks and background scores with Gemini audio generation models. |
 
+### 🎬 Media Toolkit: 23 video, audio & download tools
+
+The **[Media Toolkit](tools/media_toolkit)** (`1.0.0`, Win, Linux, Mac) gives agents a full FFmpeg-powered editing suite, plus YouTube and 1000+ site downloads through yt-dlp or pytubefix:
+
+| Group | Tools |
+|---|---|
+| Online media | `media_download` · `media_lookup` · `video_transcript` |
+| Inspect | `media_probe` · `video_frames` · `scene_detect` |
+| Edit | `media_trim` · `media_split` · `media_merge` · `video_resize` · `video_rotate` · `video_speed` · `video_watermark` · `video_subtitles` |
+| Convert | `media_convert` · `video_compress` · `video_to_gif` · `images_to_video` |
+| Audio | `audio_extract` · `audio_adjust` · `audio_mix` · `silence_cut` · `audio_waveform` |
+
 ---
 
 ## ⚡ Quickstart: Using Tools with ZAgent
@@ -39,6 +51,9 @@ zagent tools install android_project_scaffold
 
 # Or install the ZPilot browser automation tool suite
 zagent tools install web_search webpage_read zagent_in_chrome
+
+# Or pick tools from the media toolkit (needs FFmpeg)
+zagent tools install media_download media_trim video_resize video_subtitles
 ```
 
 Or download pre-compiled platform binaries directly from [GitHub Releases](https://github.com/ranjanlive/ZTOOLS/releases).

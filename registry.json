@@ -1,10 +1,10 @@
 {
   "$schema": "./registry.schema.json",
-  "registry_version": "1.1.0",
+  "registry_version": "1.2.0",
   "name": "ZTools Official Tool Registry",
   "description": "Curated catalog of tools, extensions, and automated capabilities for ZAgent and ZEngine autonomous systems.",
   "repository": "https://github.com/ranjanlive/ZTOOLS",
-  "updated_at": "2026-11-18T12:00:00Z",
+  "updated_at": "2026-11-25T00:00:00Z",
   "categories": [
     {
       "id": "developer",
@@ -30,6 +30,21 @@
       "id": "ai-media",
       "name": "AI & Generative Media",
       "description": "Image generation, music synthesis, and generative AI integrations."
+    },
+    {
+      "id": "video",
+      "name": "Video Editing",
+      "description": "Cut, join, resize, convert, compress, caption and inspect videos with FFmpeg."
+    },
+    {
+      "id": "audio",
+      "name": "Audio",
+      "description": "Extract, clean up, mix, de-silence and visualise audio with FFmpeg."
+    },
+    {
+      "id": "downloads",
+      "name": "Online Media",
+      "description": "Look up, download and transcribe videos from YouTube and 1000+ other sites."
     }
   ],
   "tools": [
@@ -340,6 +355,952 @@
       "sample_call": {
         "prompt": "Uplifting synthwave retro groove with 80s drums and melodic arpeggio",
         "duration_sec": 30
+      }
+    },
+    {
+      "id": "media_download",
+      "name": "Media Downloader",
+      "version": "1.0.0",
+      "description": "Download videos or audio from YouTube and 1000+ sites via yt-dlp, with pytubefix as a YouTube fallback. Quality, sections, subtitles and playlists.",
+      "category": "downloads",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "download",
+      "tags": ["youtube", "download", "yt-dlp", "pytubefix", "video", "audio", "mp3", "playlist"],
+      "manifest_path": "tools/media_toolkit/agent_tools/media_download/media_download.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_download-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_download-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_download-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_download-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_download-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_download-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install media_download",
+      "sample_call": {
+        "url": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+        "kind": "video",
+        "quality": "720p",
+        "subtitles": true
+      }
+    },
+    {
+      "id": "media_lookup",
+      "name": "Online Media Lookup",
+      "version": "1.0.0",
+      "description": "Inspect an online video or playlist without downloading: title, channel, duration, views, chapters, qualities and caption languages.",
+      "category": "downloads",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "search",
+      "tags": ["youtube", "metadata", "chapters", "playlist", "yt-dlp", "pytubefix"],
+      "manifest_path": "tools/media_toolkit/agent_tools/media_lookup/media_lookup.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_lookup-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_lookup-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_lookup-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_lookup-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_lookup-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_lookup-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install media_lookup",
+      "sample_call": {
+        "url": "https://www.youtube.com/watch?v=jNQXAC9IVRw"
+      }
+    },
+    {
+      "id": "video_transcript",
+      "name": "Video Transcript",
+      "version": "1.0.0",
+      "description": "Fetch the transcript of an online video from its subtitles or automatic captions, as clean text, timestamped text or SRT.",
+      "category": "downloads",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "text",
+      "tags": ["youtube", "transcript", "captions", "subtitles", "summarize", "srt"],
+      "manifest_path": "tools/media_toolkit/agent_tools/video_transcript/video_transcript.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_transcript-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_transcript-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_transcript-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_transcript-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_transcript-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_transcript-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install video_transcript",
+      "sample_call": {
+        "url": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+        "format": "timestamped"
+      }
+    },
+    {
+      "id": "media_probe",
+      "name": "Media Probe",
+      "version": "1.0.0",
+      "description": "Inspect any video or audio file: duration, container, streams, codecs, resolution, frame rate, bitrate, rotation and chapters.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "search",
+      "tags": ["ffprobe", "metadata", "codec", "resolution", "duration", "inspect"],
+      "manifest_path": "tools/media_toolkit/agent_tools/media_probe/media_probe.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_probe-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_probe-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_probe-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_probe-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_probe-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_probe-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install media_probe",
+      "sample_call": {
+        "input": "clips/interview.mp4"
+      }
+    },
+    {
+      "id": "video_frames",
+      "name": "Video Frame Extractor",
+      "version": "1.0.0",
+      "description": "Pull still frames or a labelled contact sheet out of a video so vision-capable agents can see what happens in it.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "image",
+      "tags": ["frames", "thumbnails", "contact-sheet", "vision", "screenshots", "storyboard"],
+      "manifest_path": "tools/media_toolkit/agent_tools/video_frames/video_frames.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_frames-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_frames-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_frames-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_frames-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_frames-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_frames-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install video_frames",
+      "sample_call": {
+        "input": "clips/demo.mp4",
+        "mode": "contact_sheet",
+        "count": 12
+      }
+    },
+    {
+      "id": "scene_detect",
+      "name": "Scene Detector",
+      "version": "1.0.0",
+      "description": "Detect cuts and scene changes in a video and list each scene's start, end and length, with optional thumbnails.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "video",
+      "tags": ["scenes", "cuts", "shot-detection", "chapters", "thumbnails"],
+      "manifest_path": "tools/media_toolkit/agent_tools/scene_detect/scene_detect.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/scene_detect-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/scene_detect-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/scene_detect-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/scene_detect-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/scene_detect-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/scene_detect-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install scene_detect",
+      "sample_call": {
+        "input": "footage/vlog.mp4",
+        "thumbnails": true
+      }
+    },
+    {
+      "id": "media_trim",
+      "name": "Media Trimmer",
+      "version": "1.0.0",
+      "description": "Cut a clip out of a video or audio file between two timestamps, frame-accurately or instantly without re-encoding.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "scissors",
+      "tags": ["trim", "cut", "clip", "ffmpeg", "video", "audio"],
+      "manifest_path": "tools/media_toolkit/agent_tools/media_trim/media_trim.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_trim-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_trim-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_trim-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_trim-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_trim-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_trim-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install media_trim",
+      "sample_call": {
+        "input": "talk.mp4",
+        "start": "1:30",
+        "end": "2:45"
+      }
+    },
+    {
+      "id": "media_split",
+      "name": "Media Splitter",
+      "version": "1.0.0",
+      "description": "Split a video or audio file into parts: fixed-length segments, N equal parts, or at chosen timestamps.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "scissors",
+      "tags": ["split", "segments", "chunks", "parts", "ffmpeg"],
+      "manifest_path": "tools/media_toolkit/agent_tools/media_split/media_split.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_split-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_split-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_split-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_split-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_split-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_split-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install media_split",
+      "sample_call": {
+        "input": "podcast.mp3",
+        "mode": "segment_length",
+        "segment_length": "10:00"
+      }
+    },
+    {
+      "id": "media_merge",
+      "name": "Media Merger",
+      "version": "1.0.0",
+      "description": "Join videos or audio files end to end. Identical formats are joined instantly; mixed sizes, frame rates and codecs are normalised automatically.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "layers",
+      "tags": ["merge", "concat", "join", "combine", "ffmpeg"],
+      "manifest_path": "tools/media_toolkit/agent_tools/media_merge/media_merge.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_merge-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_merge-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_merge-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_merge-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_merge-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_merge-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install media_merge",
+      "sample_call": {
+        "inputs": [
+          "intro.mp4",
+          "main.mp4",
+          "outro.mp4"
+        ],
+        "output": "final.mp4"
+      }
+    },
+    {
+      "id": "video_resize",
+      "name": "Video Resizer & Reframer",
+      "version": "1.0.0",
+      "description": "Resize videos or change their aspect ratio (16:9 → 9:16 for Shorts/Reels/TikTok) by cropping, padding or a blurred background.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "video",
+      "tags": ["resize", "aspect-ratio", "shorts", "reels", "tiktok", "crop", "pad", "vertical"],
+      "manifest_path": "tools/media_toolkit/agent_tools/video_resize/video_resize.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_resize-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_resize-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_resize-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_resize-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_resize-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_resize-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install video_resize",
+      "sample_call": {
+        "input": "landscape.mp4",
+        "aspect": "9:16",
+        "fit": "blur",
+        "height": 1920
+      }
+    },
+    {
+      "id": "video_rotate",
+      "name": "Video Rotate & Flip",
+      "version": "1.0.0",
+      "description": "Rotate a video 90/180/270 degrees and/or mirror it horizontally or vertically.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "video",
+      "tags": ["rotate", "flip", "mirror", "orientation", "ffmpeg"],
+      "manifest_path": "tools/media_toolkit/agent_tools/video_rotate/video_rotate.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_rotate-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_rotate-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_rotate-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_rotate-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_rotate-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_rotate-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install video_rotate",
+      "sample_call": {
+        "input": "phone_clip.mp4",
+        "rotate": 90
+      }
+    },
+    {
+      "id": "video_speed",
+      "name": "Speed & Reverse",
+      "version": "1.0.0",
+      "description": "Speed up, slow down or reverse video and audio, keeping voices at their natural pitch.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "video",
+      "tags": ["speed", "slow-motion", "timelapse", "reverse", "tempo"],
+      "manifest_path": "tools/media_toolkit/agent_tools/video_speed/video_speed.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_speed-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_speed-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_speed-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_speed-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_speed-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_speed-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install video_speed",
+      "sample_call": {
+        "input": "drive.mp4",
+        "speed": 4
+      }
+    },
+    {
+      "id": "video_watermark",
+      "name": "Watermark & Captions",
+      "version": "1.0.0",
+      "description": "Overlay a logo and/or text on a video with position, size, opacity and an optional time range.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "image",
+      "tags": ["watermark", "logo", "overlay", "text", "caption", "branding"],
+      "manifest_path": "tools/media_toolkit/agent_tools/video_watermark/video_watermark.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_watermark-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_watermark-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_watermark-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_watermark-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_watermark-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_watermark-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install video_watermark",
+      "sample_call": {
+        "input": "promo.mp4",
+        "image": "brand/logo.png",
+        "position": "top_right",
+        "opacity": 0.8
+      }
+    },
+    {
+      "id": "video_subtitles",
+      "name": "Subtitle Embedder",
+      "version": "1.0.0",
+      "description": "Add SRT, VTT or ASS subtitles to a video, burned into the picture or as a selectable subtitle track.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "text",
+      "tags": ["subtitles", "captions", "srt", "vtt", "ass", "burn-in", "accessibility"],
+      "manifest_path": "tools/media_toolkit/agent_tools/video_subtitles/video_subtitles.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_subtitles-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_subtitles-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_subtitles-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_subtitles-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_subtitles-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_subtitles-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install video_subtitles",
+      "sample_call": {
+        "input": "lecture.mp4",
+        "subtitles": "lecture.en.srt",
+        "mode": "burn"
+      }
+    },
+    {
+      "id": "media_convert",
+      "name": "Media Converter",
+      "version": "1.0.0",
+      "description": "Convert video and audio between formats and codecs (MP4, WebM, MKV, MOV, MP3, WAV, FLAC, H.265, AV1), with optional downscaling.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "video",
+      "tags": ["convert", "transcode", "mp4", "webm", "mkv", "h265", "av1", "mp3", "flac"],
+      "manifest_path": "tools/media_toolkit/agent_tools/media_convert/media_convert.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_convert-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_convert-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_convert-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_convert-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_convert-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/media_convert-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install media_convert",
+      "sample_call": {
+        "input": "screen.mov",
+        "format": "mp4",
+        "max_height": 1080
+      }
+    },
+    {
+      "id": "video_compress",
+      "name": "Video Compressor",
+      "version": "1.0.0",
+      "description": "Shrink videos to a target size (e.g. under 25 MB for Discord or email) with two-pass encoding, or to a quality level.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "sliders",
+      "tags": ["compress", "file-size", "discord", "email", "whatsapp", "h264", "h265", "two-pass"],
+      "manifest_path": "tools/media_toolkit/agent_tools/video_compress/video_compress.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_compress-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_compress-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_compress-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_compress-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_compress-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_compress-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install video_compress",
+      "sample_call": {
+        "input": "recording.mp4",
+        "target_size_mb": 25,
+        "max_height": 720
+      }
+    },
+    {
+      "id": "video_to_gif",
+      "name": "GIF & WebP Maker",
+      "version": "1.0.0",
+      "description": "Turn a video clip into a high-quality animated GIF (optimised palette) or a smaller animated WebP.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "image",
+      "tags": ["gif", "webp", "animation", "meme", "preview"],
+      "manifest_path": "tools/media_toolkit/agent_tools/video_to_gif/video_to_gif.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_to_gif-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_to_gif-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_to_gif-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_to_gif-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_to_gif-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/video_to_gif-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install video_to_gif",
+      "sample_call": {
+        "input": "reaction.mp4",
+        "start": "0:03",
+        "duration": 4,
+        "width": 400
+      }
+    },
+    {
+      "id": "images_to_video",
+      "name": "Slideshow Maker",
+      "version": "1.0.0",
+      "description": "Create a slideshow video from images with smooth transitions, any resolution (incl. vertical) and background music.",
+      "category": "video",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "image",
+      "tags": ["slideshow", "images", "photos", "transitions", "music", "video-creation"],
+      "manifest_path": "tools/media_toolkit/agent_tools/images_to_video/images_to_video.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/images_to_video-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/images_to_video-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/images_to_video-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/images_to_video-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/images_to_video-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/images_to_video-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install images_to_video",
+      "sample_call": {
+        "folder": "photos/trip",
+        "seconds_per_image": 4,
+        "transition": "fade",
+        "audio": "music/calm.mp3"
+      }
+    },
+    {
+      "id": "audio_extract",
+      "name": "Audio Extractor",
+      "version": "1.0.0",
+      "description": "Extract the soundtrack of a video as MP3, M4A, WAV, FLAC or Opus, optionally just a section.",
+      "category": "audio",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "music",
+      "tags": ["audio", "extract", "mp3", "wav", "flac", "podcast"],
+      "manifest_path": "tools/media_toolkit/agent_tools/audio_extract/audio_extract.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_extract-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_extract-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_extract-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_extract-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_extract-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_extract-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install audio_extract",
+      "sample_call": {
+        "input": "interview.mp4",
+        "format": "mp3",
+        "bitrate": "192k"
+      }
+    },
+    {
+      "id": "audio_adjust",
+      "name": "Audio Enhancer",
+      "version": "1.0.0",
+      "description": "Clean up audio in videos or audio files: two-pass loudness normalisation (LUFS), volume, fades, noise reduction and rumble filter.",
+      "category": "audio",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "sliders",
+      "tags": ["loudness", "normalize", "lufs", "volume", "fade", "denoise", "podcast", "cleanup"],
+      "manifest_path": "tools/media_toolkit/agent_tools/audio_adjust/audio_adjust.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_adjust-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_adjust-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_adjust-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_adjust-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_adjust-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_adjust-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install audio_adjust",
+      "sample_call": {
+        "input": "podcast_raw.wav",
+        "normalize": true,
+        "target_lufs": -16,
+        "denoise": "light",
+        "highpass": 80
+      }
+    },
+    {
+      "id": "audio_mix",
+      "name": "Music & Voice-over Mixer",
+      "version": "1.0.0",
+      "description": "Add background music or a voice-over to a video with auto-ducking, looping and fade-out, or replace its soundtrack.",
+      "category": "audio",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "music",
+      "tags": ["mix", "background-music", "voiceover", "ducking", "soundtrack", "replace-audio"],
+      "manifest_path": "tools/media_toolkit/agent_tools/audio_mix/audio_mix.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_mix-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_mix-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_mix-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_mix-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_mix-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_mix-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install audio_mix",
+      "sample_call": {
+        "input": "vlog.mp4",
+        "audio": "music/upbeat.mp3",
+        "audio_volume": 0.25,
+        "duck": true
+      }
+    },
+    {
+      "id": "silence_cut",
+      "name": "Silence Remover",
+      "version": "1.0.0",
+      "description": "Detect pauses in a recording, or cut them out automatically to make tight jump-cut edits of talks, tutorials and podcasts.",
+      "category": "audio",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "scissors",
+      "tags": ["silence", "jump-cut", "podcast", "editing", "pauses", "tighten"],
+      "manifest_path": "tools/media_toolkit/agent_tools/silence_cut/silence_cut.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/silence_cut-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/silence_cut-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/silence_cut-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/silence_cut-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/silence_cut-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/silence_cut-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install silence_cut",
+      "sample_call": {
+        "input": "tutorial.mp4",
+        "action": "remove",
+        "min_silence": "0.8"
+      }
+    },
+    {
+      "id": "audio_waveform",
+      "name": "Waveform & Audiogram",
+      "version": "1.0.0",
+      "description": "Draw audio as a waveform or spectrogram image, or render an audiogram video (animated waveform over an image) for social media.",
+      "category": "audio",
+      "suite": "media_toolkit",
+      "author": {
+        "name": "Rajeev Ranjan",
+        "github": "ranjanlive",
+        "url": "https://github.com/ranjanlive"
+      },
+      "license": "Apache-2.0",
+      "icon": "music",
+      "tags": ["waveform", "spectrogram", "audiogram", "visualization", "podcast", "social"],
+      "manifest_path": "tools/media_toolkit/agent_tools/audio_waveform/audio_waveform.json",
+      "source_url": "https://github.com/ranjanlive/ZTOOLS/tree/main/tools/media_toolkit",
+      "release_tag": "media-toolkit-v1.0.0",
+      "platforms": [
+        "windows-amd64",
+        "windows-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "darwin-amd64",
+        "darwin-arm64"
+      ],
+      "downloads": {
+        "windows-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_waveform-1.0.0-windows-amd64.zip",
+        "windows-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_waveform-1.0.0-windows-arm64.zip",
+        "linux-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_waveform-1.0.0-linux-amd64.zip",
+        "linux-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_waveform-1.0.0-linux-arm64.zip",
+        "darwin-amd64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_waveform-1.0.0-darwin-amd64.zip",
+        "darwin-arm64": "https://github.com/ranjanlive/ZTOOLS/releases/download/media-toolkit-v1.0.0/audio_waveform-1.0.0-darwin-arm64.zip"
+      },
+      "install_command": "zagent tools install audio_waveform",
+      "sample_call": {
+        "input": "episode_clip.mp3",
+        "kind": "audiogram",
+        "background_image": "cover.jpg"
       }
     }
   ]

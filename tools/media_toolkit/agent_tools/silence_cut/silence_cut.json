@@ -1,0 +1,78 @@
+{
+  "name": "silence_cut",
+  "description": "Find the silent parts of a video or audio recording (action detect, default), or remove them (action remove) to tighten talking-head videos, tutorials and podcasts with automatic jump cuts. Sound quieter than threshold_db for at least min_silence counts as silence; padding keeps a little air around speech so cuts sound natural.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the audio or video file, relative to the workspace."
+      },
+      "action": {
+        "type": "string",
+        "description": "detect (default) lists the silences; remove cuts them out.",
+        "enum": [
+          "detect",
+          "remove"
+        ],
+        "default": "detect"
+      },
+      "threshold_db": {
+        "type": "number",
+        "description": "Anything quieter than this (in dB) is silence. Default -35; use -45 for quiet recordings, -25 for noisy ones.",
+        "minimum": -90,
+        "maximum": -5,
+        "default": -35
+      },
+      "min_silence": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Shortest pause to count, default 0.6 seconds. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "padding": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Audio kept on each side of a cut, default 0.15 seconds. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. The extension picks the format. Default: next to the input as <name>_nosilence.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "quality": {
+        "type": "string",
+        "description": "Encoding quality when re-encoding: high (visually lossless, larger files), medium, or low (smallest). Default high.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/silence_cut",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "name": "media_split",
+  "description": "Split one video or audio file into several files: every N seconds (segment_length), into N equal parts (parts), or at given timestamps (at). Useful for making clips for social media, chunking long recordings for transcription, or cutting a video at chapter points. Parts are named <name>_part001, _part002, … in the output folder.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video or audio file, relative to the workspace."
+      },
+      "mode": {
+        "type": "string",
+        "description": "segment_length (default), parts or at.",
+        "enum": [
+          "segment_length",
+          "parts",
+          "at"
+        ],
+        "default": "segment_length"
+      },
+      "segment_length": {
+        "type": "string",
+        "description": "For mode segment_length: length of each part, e.g. \"60\" or \"10:00\". Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "parts": {
+        "type": "integer",
+        "description": "For mode parts: how many equal parts (2–500).",
+        "minimum": 2,
+        "maximum": 500
+      },
+      "at": {
+        "type": "array",
+        "description": "For mode at: increasing timestamps to split at. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\").",
+        "items": {
+          "type": [
+            "string",
+            "number"
+          ]
+        }
+      },
+      "output_dir": {
+        "type": "string",
+        "description": "Folder for the parts, relative to the workspace. Default <name>_parts next to the input."
+      },
+      "cut": {
+        "type": "string",
+        "description": "accurate (default, re-encodes, exact) or fast (no re-encoding, cuts at keyframes).",
+        "enum": [
+          "accurate",
+          "fast"
+        ],
+        "default": "accurate"
+      },
+      "quality": {
+        "type": "string",
+        "description": "Encoding quality when re-encoding: high (visually lossless, larger files), medium, or low (smallest). Default high.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/media_split",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 7200,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "name": "audio_mix",
+  "description": "Combine a video (or audio) with another audio file. mode mix (default) lays the audio under the original sound, at 30% volume by default, which is right for background music; duck lowers the music automatically whenever the original audio (speech) is loud. mode replace swaps the soundtrack entirely. The added audio loops to fill the video, can start later (start_at) and fades out at the end.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "The main video or audio file, relative to the workspace. Its length decides the output length."
+      },
+      "audio": {
+        "type": "string",
+        "description": "The music, voice-over or soundtrack to add, relative to the workspace."
+      },
+      "mode": {
+        "type": "string",
+        "description": "mix (default) or replace.",
+        "enum": [
+          "mix",
+          "replace"
+        ],
+        "default": "mix"
+      },
+      "audio_volume": {
+        "type": "number",
+        "description": "Volume multiplier for the added audio. Default 0.3 for mix, 1 for replace.",
+        "minimum": 0,
+        "maximum": 10
+      },
+      "input_volume": {
+        "type": "number",
+        "description": "Volume multiplier for the original audio. Default 1.",
+        "minimum": 0,
+        "maximum": 10,
+        "default": 1
+      },
+      "start_at": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "When the added audio begins in the main file. Default 0. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "loop": {
+        "type": "boolean",
+        "description": "Loop the added audio if it is shorter. Default true.",
+        "default": true
+      },
+      "duck": {
+        "type": "boolean",
+        "description": "Lower the added audio while the original is loud (speech). Default false.",
+        "default": false
+      },
+      "fade_out": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Fade the added audio out over this long at the end. Default 2 s when it is cut off. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. The extension picks the format. Default: next to the input as <name>_mixed.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input",
+      "audio"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/audio_mix",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

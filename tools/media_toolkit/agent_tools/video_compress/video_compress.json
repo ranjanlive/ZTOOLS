@@ -1,0 +1,72 @@
+{
+  "name": "video_compress",
+  "description": "Make a video file smaller. Give target_size_mb to hit a size limit (for example 25 for Discord, 16 for WhatsApp, 10 for email); it uses two-pass encoding to get as close as possible with the best quality. Otherwise quality high/medium/low picks a size/quality balance. max_height (e.g. 720) lowers the resolution for big savings; codec h265 is ~40% smaller but less widely supported.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video file, relative to the workspace."
+      },
+      "target_size_mb": {
+        "type": "number",
+        "description": "Target file size in megabytes. Uses two-pass encoding.",
+        "minimum": 0.1
+      },
+      "quality": {
+        "type": "string",
+        "description": "Without a target size: high, medium (default) or low.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "medium"
+      },
+      "max_height": {
+        "type": "integer",
+        "description": "Scale down to at most this many pixels high, e.g. 720 or 480.",
+        "minimum": 16,
+        "maximum": 4320
+      },
+      "codec": {
+        "type": "string",
+        "description": "h264 (default, plays everywhere) or h265 (smaller).",
+        "enum": [
+          "h264",
+          "h265"
+        ],
+        "default": "h264"
+      },
+      "audio_bitrate": {
+        "type": "string",
+        "description": "Audio bitrate such as 96k or 128k. Default 128k."
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. mp4 (default), mkv or mov. Default: next to the input as <name>_compressed.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/video_compress",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 7200,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

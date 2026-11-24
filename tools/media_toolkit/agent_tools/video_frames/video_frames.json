@@ -1,0 +1,97 @@
+{
+  "name": "video_frames",
+  "description": "Extract still images from a video so you can look at it. Modes: count (N frames spread evenly, default 6), interval (one frame every N seconds), timestamps (frames at exact times) or contact_sheet (one grid image of N frames with time labels, the cheapest way to see a whole video). Images are attached to the result when the model supports vision, and saved in the workspace.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video file, relative to the workspace."
+      },
+      "mode": {
+        "type": "string",
+        "description": "count (default), interval, timestamps or contact_sheet.",
+        "enum": [
+          "count",
+          "interval",
+          "timestamps",
+          "contact_sheet"
+        ],
+        "default": "count"
+      },
+      "count": {
+        "type": "integer",
+        "description": "Number of frames for count and contact_sheet (1–100). Default 6, or 12 for a contact sheet.",
+        "minimum": 1,
+        "maximum": 100
+      },
+      "interval": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "For mode interval: seconds between frames, e.g. \"10\"."
+      },
+      "timestamps": {
+        "type": "array",
+        "description": "For mode timestamps: the times to capture. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\").",
+        "items": {
+          "type": [
+            "string",
+            "number"
+          ]
+        }
+      },
+      "width": {
+        "type": "integer",
+        "description": "Width of each frame in pixels (height keeps the aspect ratio). Default 640, or 320 in a contact sheet.",
+        "minimum": 16,
+        "maximum": 7680
+      },
+      "image_format": {
+        "type": "string",
+        "description": "jpg (default) or png.",
+        "enum": [
+          "jpg",
+          "png"
+        ],
+        "default": "jpg"
+      },
+      "columns": {
+        "type": "integer",
+        "description": "Columns in a contact sheet. Default: a square-ish grid.",
+        "minimum": 1,
+        "maximum": 20
+      },
+      "labels": {
+        "type": "boolean",
+        "description": "Stamp the time on each frame. Default true for contact sheets, false otherwise."
+      },
+      "output_dir": {
+        "type": "string",
+        "description": "Folder for the frames, relative to the workspace. Default <name>_frames next to the video."
+      },
+      "attach": {
+        "type": "boolean",
+        "description": "Attach the images to the result for vision models. Default true.",
+        "default": true
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/video_frames",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 900,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

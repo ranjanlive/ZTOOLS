@@ -1,0 +1,81 @@
+{
+  "name": "video_subtitles",
+  "description": "Add subtitles to a video. mode burn (default) draws them into the picture so they show everywhere, including social media; mode soft adds a subtitle track that viewers can switch on and off (mp4, mov, mkv, webm) without re-encoding. Works well with transcripts from video_transcript or .srt files downloaded by media_download.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video file, relative to the workspace."
+      },
+      "subtitles": {
+        "type": "string",
+        "description": "Subtitle file (.srt, .vtt, .ass or .ssa), relative to the workspace."
+      },
+      "mode": {
+        "type": "string",
+        "description": "burn (default) or soft.",
+        "enum": [
+          "burn",
+          "soft"
+        ],
+        "default": "burn"
+      },
+      "language": {
+        "type": "string",
+        "description": "For soft subtitles: ISO 639 language code such as en or eng."
+      },
+      "font_size": {
+        "type": "integer",
+        "description": "Font size for burned SRT/VTT subtitles. Default: the renderer's default.",
+        "minimum": 1,
+        "maximum": 200
+      },
+      "position": {
+        "type": "string",
+        "description": "Burned SRT/VTT subtitles at the bottom (default) or top.",
+        "enum": [
+          "bottom",
+          "top"
+        ],
+        "default": "bottom"
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. The extension picks the format. Default: next to the input as <name>_subtitled.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "quality": {
+        "type": "string",
+        "description": "Encoding quality when re-encoding: high (visually lossless, larger files), medium, or low (smallest). Default high.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input",
+      "subtitles"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/video_subtitles",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

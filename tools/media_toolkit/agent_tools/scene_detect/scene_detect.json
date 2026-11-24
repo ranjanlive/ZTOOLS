@@ -1,0 +1,59 @@
+{
+  "name": "scene_detect",
+  "description": "Find the cuts and scene changes in a video. Returns a numbered list of scenes with start, end and length, which is useful for chaptering, splitting a video into shots, or finding where something changes. threshold controls sensitivity (lower finds subtler changes). With thumbnails true, one image per scene is saved and attached.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video file, relative to the workspace."
+      },
+      "threshold": {
+        "type": "number",
+        "description": "Scene-change sensitivity from 0.05 to 0.95. Default 0.3; use 0.15–0.2 for subtle changes, 0.4+ for hard cuts only.",
+        "minimum": 0.05,
+        "maximum": 0.95,
+        "default": 0.3
+      },
+      "min_scene_length": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Ignore scenes shorter than this. Default 1 second. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "max_scenes": {
+        "type": "integer",
+        "description": "Stop after this many scenes. Default 200.",
+        "minimum": 1,
+        "maximum": 2000,
+        "default": 200
+      },
+      "thumbnails": {
+        "type": "boolean",
+        "description": "Save (and attach) one thumbnail per scene. Default false.",
+        "default": false
+      },
+      "output_dir": {
+        "type": "string",
+        "description": "Folder for thumbnails, relative to the workspace. Default <name>_scenes next to the video."
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/scene_detect",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 1800,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

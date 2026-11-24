@@ -1,0 +1,45 @@
+name: Release Media Toolkit
+
+# Push a tag such as media-toolkit-v1.0.0 to build every tool for every
+# platform and publish the archives (and SHA256SUMS.txt) as a GitHub release.
+on:
+  push:
+    tags: [ 'media-toolkit-v*' ]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/media_toolkit
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: tools/media_toolkit/go.mod
+          cache-dependency-path: tools/media_toolkit/go.mod
+
+      - name: Install FFmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg fonts-dejavu-core
+
+      - name: Test
+        run: go vet ./... && go test -count=1 ./...
+
+      - name: Build archives
+        run: |
+          VERSION="${GITHUB_REF_NAME#media-toolkit-v}"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          go run ./cmd/package -version "$VERSION" -out dist
+          ls -la "dist/$VERSION"
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/"$VERSION"/* \
+            --title "Media Toolkit v$VERSION" \
+            --notes "23 FFmpeg-powered video, audio and download tools for ZAgent, ZEngine and ZPilot agents. Each archive holds one tool; verify downloads with SHA256SUMS.txt. Requires FFmpeg (and yt-dlp or pytubefix for the download tools). See tools/media_toolkit/README.md."

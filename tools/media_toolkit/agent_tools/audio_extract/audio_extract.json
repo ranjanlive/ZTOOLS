@@ -1,0 +1,69 @@
+{
+  "name": "audio_extract",
+  "description": "Save the audio of a video (or convert an audio file) as mp3 (default), m4a, wav, flac, opus or ogg, optionally only between start and end. Use wav for speech-to-text tools, mp3 for sharing.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the audio or video file, relative to the workspace."
+      },
+      "format": {
+        "type": "string",
+        "description": "mp3 (default), m4a, wav, flac, opus or ogg. The output extension wins if given.",
+        "enum": [
+          "mp3",
+          "m4a",
+          "wav",
+          "flac",
+          "opus",
+          "ogg"
+        ],
+        "default": "mp3"
+      },
+      "bitrate": {
+        "type": "string",
+        "description": "Bitrate for lossy formats, such as 128k, 192k (default) or 320k."
+      },
+      "start": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Start of the section. Default the beginning. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "end": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "End of the section. Default the end. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. The extension picks the format. Default: next to the input as <name>_audio.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/audio_extract",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 1800,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

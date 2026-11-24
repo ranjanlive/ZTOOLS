@@ -1,0 +1,65 @@
+{
+  "name": "video_speed",
+  "description": "Change the playback speed of a video or audio file (0.25× to 8×), for example 2 for a quick time-lapse or 0.5 for slow motion, and/or play it backwards. Voices keep their natural pitch unless keep_pitch is false (chipmunk/deep effect). Reverse is limited to 10-minute files.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video or audio file, relative to the workspace."
+      },
+      "speed": {
+        "type": "number",
+        "description": "Playback speed multiplier from 0.25 to 8 (2 = twice as fast, 0.5 = half speed). Default 1.",
+        "minimum": 0.25,
+        "maximum": 8,
+        "default": 1
+      },
+      "keep_pitch": {
+        "type": "boolean",
+        "description": "Keep voices at natural pitch when changing speed. Default true.",
+        "default": true
+      },
+      "reverse": {
+        "type": "boolean",
+        "description": "Play backwards. Default false.",
+        "default": false
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. The extension picks the format. Default: next to the input as <name>_<speed>x.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "quality": {
+        "type": "string",
+        "description": "Encoding quality when re-encoding: high (visually lossless, larger files), medium, or low (smallest). Default high.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/video_speed",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

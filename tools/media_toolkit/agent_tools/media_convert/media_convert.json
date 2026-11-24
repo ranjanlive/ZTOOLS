@@ -1,0 +1,95 @@
+{
+  "name": "media_convert",
+  "description": "Convert a video or audio file to another format or codec. The output extension (or format) decides the container, with sensible codecs chosen automatically: mp4/mov/mkv → H.264 + AAC, webm → VP9 + Opus, mp3, m4a, wav, flac, ogg/opus. Override with video_codec (h264, h265, vp9, av1, copy) and audio_codec (aac, mp3, opus, flac, copy, none), and optionally cap the height or change the frame rate.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video or audio file, relative to the workspace."
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. Its extension picks the format. Default: next to the input."
+      },
+      "format": {
+        "type": "string",
+        "description": "Target format when output is not given, such as mp4, webm, mkv, mov, mp3, m4a, wav, flac or opus."
+      },
+      "video_codec": {
+        "type": "string",
+        "description": "auto (default), h264, h265, vp9, av1 or copy.",
+        "enum": [
+          "auto",
+          "h264",
+          "h265",
+          "vp9",
+          "av1",
+          "copy"
+        ],
+        "default": "auto"
+      },
+      "audio_codec": {
+        "type": "string",
+        "description": "auto (default), aac, mp3, opus, flac, copy or none (drop audio).",
+        "enum": [
+          "auto",
+          "aac",
+          "mp3",
+          "opus",
+          "flac",
+          "copy",
+          "none"
+        ],
+        "default": "auto"
+      },
+      "quality": {
+        "type": "string",
+        "description": "Encoding quality when re-encoding: high (visually lossless, larger files), medium, or low (smallest). Default high.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      },
+      "audio_bitrate": {
+        "type": "string",
+        "description": "Audio bitrate such as 128k, 192k or 320k. Default 192k."
+      },
+      "max_height": {
+        "type": "integer",
+        "description": "Scale down to at most this many pixels high (e.g. 720). Never scales up.",
+        "minimum": 16,
+        "maximum": 4320
+      },
+      "fps": {
+        "type": "number",
+        "description": "Change the frame rate, e.g. 30.",
+        "minimum": 1,
+        "maximum": 240
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/media_convert",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 7200,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

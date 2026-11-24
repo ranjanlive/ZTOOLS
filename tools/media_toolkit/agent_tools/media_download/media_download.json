@@ -1,0 +1,114 @@
+{
+  "name": "media_download",
+  "description": "Download a video, or just its audio, from YouTube or any of the 1000+ sites yt-dlp supports (Vimeo, X/Twitter, Instagram, TikTok, SoundCloud, …). Use it when the user asks to save or fetch online media into the workspace. Choose kind \"audio\" for music, podcasts or speech (MP3 by default). You can limit the resolution, download only a section, fetch subtitles, or download the first N videos of a playlist. Files are saved in the workspace (downloads/ by default) and the result lists their paths, durations and sizes. Only download content the user owns or has permission to use.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "Address of the video, audio or playlist page (http or https)."
+      },
+      "kind": {
+        "type": "string",
+        "description": "What to download: video (picture and sound) or audio (sound only). Default video.",
+        "enum": [
+          "video",
+          "audio"
+        ],
+        "default": "video"
+      },
+      "quality": {
+        "type": "string",
+        "description": "Highest video resolution to download. Default best.",
+        "enum": [
+          "best",
+          "2160p",
+          "1440p",
+          "1080p",
+          "720p",
+          "480p",
+          "360p",
+          "240p"
+        ],
+        "default": "best"
+      },
+      "audio_format": {
+        "type": "string",
+        "description": "Format for kind \"audio\". Default mp3.",
+        "enum": [
+          "mp3",
+          "m4a",
+          "opus",
+          "wav",
+          "flac"
+        ],
+        "default": "mp3"
+      },
+      "output_dir": {
+        "type": "string",
+        "description": "Folder to save into, relative to the workspace. Default downloads."
+      },
+      "start": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Download only from this point. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "end": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Download only up to this point. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "subtitles": {
+        "type": "boolean",
+        "description": "Also save subtitles (or automatic captions) as .srt next to the file. Default false.",
+        "default": false
+      },
+      "subtitle_language": {
+        "type": "string",
+        "description": "Subtitle language code, such as en, hi or es. Default en."
+      },
+      "playlist_limit": {
+        "type": "integer",
+        "description": "For playlist URLs: how many videos to download, from the start. 0 (default) downloads a single video only.",
+        "minimum": 0,
+        "maximum": 200,
+        "default": 0
+      },
+      "max_filesize_mb": {
+        "type": "integer",
+        "description": "Skip the download if the file would be larger than this many megabytes. Default: no limit.",
+        "minimum": 1
+      },
+      "backend": {
+        "type": "string",
+        "description": "Downloader to use. auto (default) uses yt-dlp when installed, otherwise pytubefix for YouTube.",
+        "enum": [
+          "auto",
+          "yt-dlp",
+          "pytubefix"
+        ],
+        "default": "auto"
+      }
+    },
+    "required": [
+      "url"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/media_download",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "name": "video_resize",
+  "description": "Resize a video or change its shape. Give width and/or height to scale, or an aspect ratio such as 9:16 (Shorts, Reels, TikTok), 1:1, 4:5 or 16:9. fit decides how the picture fills the new shape: pad (letterbox, default), crop (fill and cut the edges; focus picks which part to keep), blur (fill the bars with a blurred copy, popular for vertical video) or stretch.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video file, relative to the workspace."
+      },
+      "width": {
+        "type": "integer",
+        "description": "Target width in pixels. With only width or height, the other follows the aspect ratio.",
+        "minimum": 2,
+        "maximum": 7680
+      },
+      "height": {
+        "type": "integer",
+        "description": "Target height in pixels.",
+        "minimum": 2,
+        "maximum": 7680
+      },
+      "aspect": {
+        "type": "string",
+        "description": "Target aspect ratio such as 9:16, 16:9, 1:1, 4:5 or 21:9. Without width/height the size is derived from the source."
+      },
+      "fit": {
+        "type": "string",
+        "description": "pad (default), crop, blur or stretch.",
+        "enum": [
+          "pad",
+          "crop",
+          "blur",
+          "stretch"
+        ],
+        "default": "pad"
+      },
+      "focus": {
+        "type": "string",
+        "description": "With fit crop: which part to keep. Default center.",
+        "enum": [
+          "center",
+          "left",
+          "right",
+          "top",
+          "bottom"
+        ],
+        "default": "center"
+      },
+      "pad_color": {
+        "type": "string",
+        "description": "Bar color for fit pad: a name (black, white) or hex (0x1E1E1E). Default black."
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. The extension picks the format. Default: next to the input as <name>_<width>x<height>.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "quality": {
+        "type": "string",
+        "description": "Encoding quality when re-encoding: high (visually lossless, larger files), medium, or low (smallest). Default high.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/video_resize",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

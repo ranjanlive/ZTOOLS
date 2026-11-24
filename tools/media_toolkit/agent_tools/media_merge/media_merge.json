@@ -1,0 +1,80 @@
+{
+  "name": "media_merge",
+  "description": "Join several videos (or audio files) end to end into one file, in the order given. In auto mode, files with identical formats are joined instantly without re-encoding; otherwise every clip is scaled and padded to the same size and frame rate, missing audio is filled with silence, and the result is re-encoded. Use width/height/fps to choose the output format.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "inputs": {
+        "type": "array",
+        "description": "Files to join, in order (2–200), relative to the workspace.",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 2
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. The extension picks the format; default is the first input's format. Default: next to the input as <name>_merged.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "mode": {
+        "type": "string",
+        "description": "auto (default), fast (only identical formats) or reencode.",
+        "enum": [
+          "auto",
+          "fast",
+          "reencode"
+        ],
+        "default": "auto"
+      },
+      "width": {
+        "type": "integer",
+        "description": "Output width when re-encoding. Default: the first video's.",
+        "minimum": 16,
+        "maximum": 7680
+      },
+      "height": {
+        "type": "integer",
+        "description": "Output height when re-encoding. Default: the first video's.",
+        "minimum": 16,
+        "maximum": 7680
+      },
+      "fps": {
+        "type": "number",
+        "description": "Output frame rate when re-encoding. Default: the first video's.",
+        "minimum": 1,
+        "maximum": 120
+      },
+      "quality": {
+        "type": "string",
+        "description": "Encoding quality when re-encoding: high (visually lossless, larger files), medium, or low (smallest). Default high.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "inputs"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/media_merge",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 7200,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

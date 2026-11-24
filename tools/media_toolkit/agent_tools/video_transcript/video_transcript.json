@@ -1,0 +1,69 @@
+{
+  "name": "video_transcript",
+  "description": "Get what is said in an online video (YouTube and other yt-dlp sites) from its subtitles or automatic captions, without downloading the video. Use it to summarise, quote, translate or search a video. Formats: text (clean paragraphs, the best for reading), timestamped ([m:ss] every ~20 seconds, best for citing moments) or srt. Rolling duplicates in automatic captions are removed. Long transcripts are saved to a file in the workspace and the beginning is returned.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "Address of the video page (http or https)."
+      },
+      "language": {
+        "type": "string",
+        "description": "Caption language code, such as en, hi, es or pt-BR. Default en."
+      },
+      "format": {
+        "type": "string",
+        "description": "text, timestamped or srt. Default text.",
+        "enum": [
+          "text",
+          "timestamped",
+          "srt"
+        ],
+        "default": "text"
+      },
+      "save_to": {
+        "type": "string",
+        "description": "Also save the transcript to this file, relative to the workspace."
+      },
+      "max_chars": {
+        "type": "integer",
+        "description": "Maximum characters to return; longer transcripts are saved to a file. Default 40000.",
+        "minimum": 500,
+        "maximum": 500000,
+        "default": 40000
+      },
+      "backend": {
+        "type": "string",
+        "description": "auto (default), yt-dlp or pytubefix.",
+        "enum": [
+          "auto",
+          "yt-dlp",
+          "pytubefix"
+        ],
+        "default": "auto"
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "url"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/video_transcript",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 300,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

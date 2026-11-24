@@ -1,0 +1,45 @@
+name: Media Toolkit
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'tools/media_toolkit/**', 'registry.json', '.github/workflows/media-toolkit.yml' ]
+  pull_request:
+    branches: [ main ]
+    paths: [ 'tools/media_toolkit/**', 'registry.json', '.github/workflows/media-toolkit.yml' ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Vet & test (FFmpeg integration)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/media_toolkit
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: tools/media_toolkit/go.mod
+          cache-dependency-path: tools/media_toolkit/go.mod
+
+      - name: Install FFmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg fonts-dejavu-core
+
+      - name: gofmt
+        run: test -z "$(gofmt -l .)" || (gofmt -l . && exit 1)
+
+      - name: go vet
+        run: go vet ./...
+
+      - name: go test
+        run: go test -count=1 ./...
+
+      - name: Cross-compile all platforms
+        run: |
+          for p in windows/amd64 windows/arm64 linux/amd64 linux/arm64 darwin/amd64 darwin/arm64; do
+            GOOS=${p%/*} GOARCH=${p#*/} CGO_ENABLED=0 go build -o /dev/null . || exit 1
+          done

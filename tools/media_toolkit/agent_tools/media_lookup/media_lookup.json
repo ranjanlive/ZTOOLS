@@ -1,0 +1,52 @@
+{
+  "name": "media_lookup",
+  "description": "Look up an online video or playlist without downloading it. Returns the title, channel, duration, publish date, views, available video qualities, subtitle and automatic-caption languages, chapters, tags and description; for playlists, the list of videos with their URLs. Use it before downloading to check what is available, or to answer questions about a video.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "Address of the video or playlist page (http or https)."
+      },
+      "playlist_limit": {
+        "type": "integer",
+        "description": "For playlists: how many entries to list. Default 25.",
+        "minimum": 1,
+        "maximum": 500,
+        "default": 25
+      },
+      "max_description": {
+        "type": "integer",
+        "description": "Maximum characters of the description to include (0 = omit). Default 1500.",
+        "minimum": 0,
+        "default": 1500
+      },
+      "backend": {
+        "type": "string",
+        "description": "auto (default), yt-dlp or pytubefix.",
+        "enum": [
+          "auto",
+          "yt-dlp",
+          "pytubefix"
+        ],
+        "default": "auto"
+      }
+    },
+    "required": [
+      "url"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/media_lookup",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 180,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

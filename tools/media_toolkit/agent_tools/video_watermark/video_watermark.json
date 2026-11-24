@@ -1,0 +1,115 @@
+{
+  "name": "video_watermark",
+  "description": "Put a logo image and/or a line of text on a video: branding, a title card, a caption or a call to action. Choose the position (corners, edges or center), margin, opacity and size, and optionally show it only between start and end. Text gets a soft background box for readability unless background is false.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video file, relative to the workspace."
+      },
+      "image": {
+        "type": "string",
+        "description": "Logo or image to overlay (PNG with transparency works best), relative to the workspace."
+      },
+      "text": {
+        "type": "string",
+        "description": "Text to draw (multiple lines allowed)."
+      },
+      "position": {
+        "type": "string",
+        "description": "Where to place it. Default bottom_right.",
+        "enum": [
+          "top_left",
+          "top",
+          "top_right",
+          "left",
+          "center",
+          "right",
+          "bottom_left",
+          "bottom",
+          "bottom_right"
+        ],
+        "default": "bottom_right"
+      },
+      "margin": {
+        "type": "integer",
+        "description": "Distance from the edges in pixels. Default 24.",
+        "minimum": 0,
+        "maximum": 2000,
+        "default": 24
+      },
+      "opacity": {
+        "type": "number",
+        "description": "0.05 (faint) to 1 (solid). Default 0.85.",
+        "minimum": 0.05,
+        "maximum": 1,
+        "default": 0.85
+      },
+      "size": {
+        "type": "number",
+        "description": "Image width as a fraction of the video width (default 0.15), or text height as a fraction of the video height (default 0.05).",
+        "minimum": 0.01,
+        "maximum": 1
+      },
+      "text_color": {
+        "type": "string",
+        "description": "Text color: a name (white, yellow) or hex (#FFCC00). Default white."
+      },
+      "background": {
+        "type": "boolean",
+        "description": "Draw a translucent box behind the text. Default true.",
+        "default": true
+      },
+      "start": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Show it from this time. Default the beginning. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "end": {
+        "type": [
+          "string",
+          "number"
+        ],
+        "description": "Hide it after this time. Default the end. Time as seconds (\"90\", \"12.5\") or clock time (\"1:30\", \"01:02:03.5\")."
+      },
+      "output": {
+        "type": "string",
+        "description": "Path for the result, relative to the workspace. The extension picks the format. Default: next to the input as <name>_watermarked.<ext>. An existing file is never replaced unless overwrite is true."
+      },
+      "quality": {
+        "type": "string",
+        "description": "Encoding quality when re-encoding: high (visually lossless, larger files), medium, or low (smallest). Default high.",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default": "high"
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Replace the output file if it already exists. Default false.",
+        "default": false
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/video_watermark",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 3600,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}

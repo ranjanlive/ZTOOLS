@@ -1,0 +1,38 @@
+{
+  "name": "media_probe",
+  "description": "Inspect a video or audio file with FFprobe: container, duration, size, overall bitrate, and every stream (codec, resolution, frame rate, pixel format, rotation, sample rate, channels, language), plus chapters. Use it before editing to learn a file's length and format, or to answer questions about a media file. format \"json\" returns the full FFprobe data.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "input": {
+        "type": "string",
+        "description": "Path of the video or audio file, relative to the workspace."
+      },
+      "format": {
+        "type": "string",
+        "description": "summary (readable, default) or json (complete FFprobe output).",
+        "enum": [
+          "summary",
+          "json"
+        ],
+        "default": "summary"
+      }
+    },
+    "required": [
+      "input"
+    ],
+    "additionalProperties": false
+  },
+  "command": [
+    "{dir}/media_probe",
+    "--agent-json"
+  ],
+  "input": "stdin_json",
+  "output": "json",
+  "timeout_seconds": 60,
+  "platforms": [
+    "windows",
+    "linux",
+    "darwin"
+  ]
+}
